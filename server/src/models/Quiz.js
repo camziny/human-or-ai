@@ -8,18 +8,28 @@ class Quiz extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["content", "answer"],
+      required: ["content", "answer", "categoryId", "userId"],
       properties: {
         content: { type: "string" },
         answer: { type: "string" },
+        categoryId: { type: ["string", "integer"] },
+        userId: { type: ["string", "integer"] },
       },
     };
   }
 
   static get relationMappings() {
-    const { User, Vote } = require("./index.js");
+    const { Category, User, Vote } = require("./index.js");
 
     return {
+      category: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: Category,
+        join: {
+          from: "quizzes.categoryId",
+          to: "categories.id",
+        },
+      },
       user: {
         relation: Model.BelongsToOneRelation,
         modelClass: User,
