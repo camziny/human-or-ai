@@ -18,5 +18,9 @@
   },
   "engines": {
     "node": "^14.19"
+  },
+  "dependencies": {
+    "@react-spring/web": "^9.6.1",
+    "@use-gesture/react": "^10.2.23"
   }
 }

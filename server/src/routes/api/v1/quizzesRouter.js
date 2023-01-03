@@ -8,27 +8,44 @@ import QuizSerializer from "../../../serializers/QuizSerializer.js";
 const quizzesRouter = new express.Router();
 
 quizzesRouter.use("/:id/votes", quizVotesRouter);
-quizzesRouter.get("/", async (req, res) => {
+quizzesRouter.delete("id", async (req, res) => {
   try {
-    const quizzes = await Quiz.query();
-    const serializedQuizzes = await Promise.all(
-      quizzes.map(async (attraction) => await QuizSerializer.getSummary(quiz))
-    );
-    return res.status(200).json({ quizzes: serializedQuizzes });
+    const quizToDelete = await Quiz.query().findById(req.params.id);
+    if (req.user && quizToDelete.userId === req.user.id) {
+      await quizToDelete.$relatedQuery("votes").delete();
+      await quizToDelete.$query().delete();
+      res.status(200).json({ message: "This question was successfully deleted " });
+    } else {
+      res.status(401).json({ "AuthorizationError:": "User not authorized to delete question" });
+    }
   } catch (error) {
-    return res.status(500).json({ errors: error });
+    res.status(500).json({ errors: error });
   }
 });
 
-quizzesRouter.get("/:id", async (req, res) => {
-  const { id } = req.params;
+quizzesRouter.patch("/:id", async (req, res) => {
+  const { content } = req.body;
+  const { answer } = cleanUserInput(req.body);
+
   try {
-    const quiz = await Quiz.query().findById(id);
-    const serializedQuiz = await QuizSerializer.getSummary(quiz);
-    return res.status(200).json({ quiz: serializedQuiz });
+    if (!answer) {
+      return res.status(422).json({ "Error:": "Answer field must have a value" });
+    }
+
+    const quizToEdit = await Quiz.query().findById(req.params.id);
+    if (quizToEdit.userId === req.user.id) {
+      const updatedQuiz = await Quiz.query().patchAndFetchById(req.params.id, {
+        content,
+        answer,
+      });
+      res.status(200).json({ quiz: updatedQuiz });
+    }
   } catch (error) {
-    console.log(error);
-    return res.status(500).json({ errors: error });
+    if (error instanceof ValidationError) {
+      return res.status(422).json({ errors: error });
+    } else {
+      return res.status(500).json({ errors: error });
+    }
   }
 });
 
