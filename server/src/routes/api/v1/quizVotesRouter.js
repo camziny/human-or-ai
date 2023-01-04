@@ -1,5 +1,5 @@
 import express from "express";
-import VoteSerializer from "../../../serializers/VoteSerializer";
+import VoteSerializer from "../../../serializers/VoteSerializer.js";
 import { Vote } from "../../../models/index.js";
 
 const quizVotesRouter = new express.Router({ mergeParams: true });
