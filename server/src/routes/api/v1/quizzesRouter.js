@@ -3,7 +3,6 @@ import { Quiz } from "../../../models/index.js";
 import cleanUserInput from "../../../services/cleanUserInput.js";
 import { ValidationError } from "objection";
 import quizVotesRouter from "./quizVotesRouter.js";
-import QuizSerializer from "../../../serializers/QuizSerializer.js";
 
 const quizzesRouter = new express.Router();
 
