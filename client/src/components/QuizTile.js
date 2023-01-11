@@ -58,6 +58,12 @@ const QuizTile = ({
   let avg = 0;
   votes.forEach((vote) => (avg += vote.score / numOfVotes));
 
+  const quizImage = content ? (
+    <div>
+      <img className="quiz-image" src={content}></img>
+    </div>
+  ) : null;
+
   if (isBeingEdited) {
     return (
       <EditQuizForm
@@ -72,8 +78,8 @@ const QuizTile = ({
 
   return (
     <div className="quiz-tile">
-      <h4>{content}</h4>
-      <p>{numOfVotes}</p>
+      <h4>{quizImage}</h4>
+      {/* <p>{numOfVotes}</p> */}
       <QuizVote
         quizId={id}
         userLoggedIn={userLoggedIn}
