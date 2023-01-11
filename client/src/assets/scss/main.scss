@@ -9,7 +9,7 @@
 }
 
 body {
-  background-color: darkcyan;
+  background-color: #07102d;
   color: white;
 }
 
@@ -18,7 +18,7 @@ a {
 }
 
 menu {
-  color: darkcyan;
+  color: #07102d;
 }
 
 :root {
@@ -27,8 +27,9 @@ menu {
 }
 
 .button {
-  background-color: darkcyan;
+  background-color: #07102d;
   border-radius: 10px;
+  display: inline-block;
 }
 
 .top-bar {
@@ -87,11 +88,11 @@ p {
 }
 
 .red {
-  background-color: yellowgreen;
+  background-color: #ea9027;
 }
 
 .green {
-  background-color: yellowgreen;
+  background-color: #ea9027;
 }
 
 .quiz-voting-area {
@@ -121,4 +122,42 @@ p {
 .quiz-answer {
   text-align: center;
   font-size: 24px;
+}
+.quiz-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.quiz-image,
+img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  margin: auto;
+  margin-top: 25px;
+  width: 500px;
+  height: 500px;
+}
+
+.human-vote-button {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  padding: 5px;
+}
+
+.ai-vote-button {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-right: auto;
+  padding: 5px;
+}
+
+.inline-list {
+  margin-top: 25px;
 }

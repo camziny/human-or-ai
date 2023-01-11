@@ -3,19 +3,19 @@ import { ValidationError } from "objection";
 import cleanUserInput from "../../../services/cleanUserInput.js";
 import { Quiz } from "../../../models/index.js";
 import QuizSerializer from "../../../serializers/QuizSerializer.js";
+import uploadImage from "../../../services/uploadImage.js";
 
 const categoryQuizzesRouter = new express.Router({ mergeParams: true });
 
-categoryQuizzesRouter.post("/", async (req, res) => {
-  const { title, content, rating } = cleanUserInput(req.body);
-  const { categoryId } = req.params;
+categoryQuizzesRouter.post("/", uploadImage.single("image"), async (req, res) => {
+  const { answer } = cleanUserInput(req.body);
   const userId = req.user.userId;
 
   try {
     const newQuiz = await Quiz.query().insertAndFetch({
-      content,
+      content: req.file.location,
       answer,
-      categoryId,
+      categoryId: req.params.id,
       userId,
     });
     await newQuiz.$relatedQuery("votes").insert({ userId, quizId: newQuiz.id, score: 1 });
