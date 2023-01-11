@@ -22,7 +22,7 @@ class Category extends Model {
     return {
       quizzes: {
         relation: Model.HasManyRelation,
-        modeClass: Quiz,
+        modelClass: Quiz,
         join: {
           from: "categories.id",
           to: "quizzes.categoryId",

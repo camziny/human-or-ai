@@ -26,6 +26,7 @@ categoriesRouter.get("/:id", async (req, res) => {
     const serializedCategory = await CategorySerializer.getDetails(category);
     return res.status(200).json({ category: serializedCategory });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ errors: error });
   }
 });

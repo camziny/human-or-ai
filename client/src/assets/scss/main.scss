@@ -8,9 +8,41 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: darkcyan;
+  color: white;
+}
+
+a {
+  color: white;
+}
+
+menu {
+  color: darkcyan;
+}
+
 :root {
   -moz-tab-size: 4;
   tab-size: 4;
+}
+
+.button {
+  background-color: darkcyan;
+  border-radius: 10px;
+}
+
+.top-bar {
+  background-color: white;
+  color: black;
+}
+
+.top-bar,
+a {
+  color: black;
+}
+
+.home-link {
+  color: black;
 }
 
 .play-now {
@@ -19,8 +51,74 @@
   font-size: 36px;
 }
 
+.play-now-header {
+  color: white;
+}
+
 .categories-list {
   text-align: center;
   margin-top: 50px;
+  font-size: 24px;
+}
+
+.categories-list-header {
+  font-size: 28px;
+  font-weight: 500;
+}
+.categories-list,
+a {
+  color: white;
+  font-size: 24px;
+}
+
+.categories-list,
+p {
+  font-size: 18px;
+}
+
+.human-vote-button {
+  border-radius: 16px;
+  font-size: 24px;
+}
+
+.ai-vote-button {
+  border-radius: 16px;
+  font-size: 24px;
+}
+
+.red {
+  background-color: yellowgreen;
+}
+
+.green {
+  background-color: yellowgreen;
+}
+
+.quiz-voting-area {
+  display: flex;
+  justify-content: space-around;
+  height: 60px;
+
+  .score-wrapper {
+    width: 30px;
+    height: 30px;
+    p {
+      font-size: 30pt;
+      text-align: center;
+    }
+  }
+  input {
+    width: 100px;
+    padding: auto;
+    border-radius: 16px;
+  }
+}
+.quiz-content {
+  display: flex;
+  padding: 20px;
+}
+
+.quiz-answer {
+  text-align: center;
   font-size: 24px;
 }

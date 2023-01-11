@@ -14,7 +14,7 @@ class QuizSerializer {
     serializedQuiz.votes = await Promise.all(
       votes.map(async (vote) => {
         const serializedVote = await VoteSerializer.getSummary(vote);
-        serialized.totalScore += vote.score;
+        serializedQuiz.totalScore += vote.score;
         return serializedVote;
       })
     );

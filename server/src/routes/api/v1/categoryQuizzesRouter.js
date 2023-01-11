@@ -15,7 +15,6 @@ categoryQuizzesRouter.post("/", async (req, res) => {
     const newQuiz = await Quiz.query().insertAndFetch({
       content,
       answer,
-      response,
       categoryId,
       userId,
     });

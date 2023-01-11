@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import QuizTile from "./QuizTile";
 import translateServerErrors from "../services/translateServerErrors.js";
 import ErrorList from "./layout/ErrorList.js";
+import NewQuizForm from "./NewQuizForm";
 
 const CategoryShowPage = (props) => {
   const { id } = useParams();
@@ -17,6 +18,10 @@ const CategoryShowPage = (props) => {
     getCategory();
   }, []);
 
+  const addNewQuiz = (quiz) => {
+    setCategory({ ...category, quizzes: [...category.quizzes, quiz] });
+  };
+
   const getCategory = async () => {
     try {
       const response = await fetch(`/api/v1/categories/${id}`);
@@ -29,6 +34,77 @@ const CategoryShowPage = (props) => {
       setCategory(categoryData.category);
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
+    }
+  };
+
+  const deleteQuiz = async (quizId) => {
+    try {
+      const response = await fetch(`/api/v1/quizzes/${quizId}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
+      if (!response.ok) {
+        if (response.status === 401) {
+          const body = await response.json();
+          return setErrors(body);
+        } else {
+          throw new Error(`${response.status} (${response.statusText})`);
+        }
+      } else {
+        const body = await response.json();
+        const filteredQuizzes = category.quizzes.filter((quiz) => {
+          return quiz.id !== quizId;
+        });
+        setErrors({});
+        setCategory({ ...category, quizzes: filteredQuizzes });
+      }
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`);
+    }
+  };
+
+  const patchQuiz = async (quizBody, quizId) => {
+    try {
+      const response = await fetch(`/api/v1/quizzes/${quizId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(quizBody),
+      });
+      if (!response.ok) {
+        if (response.status === 422) {
+          const body = await response.json();
+          const updatedQuizzesWithErrors = category.quizzes.map((quizId) => {
+            if (quiz.id === quizId) {
+              quiz.errors = body;
+            }
+            return quiz;
+          });
+          setCategory({ ...category, quizzes: updatedQuizzesWithErrors });
+          return false;
+        } else {
+          const errorMessage = `${response.status} (${response.statusText})`;
+          const error = new Error(errorMessage);
+          throw error;
+        }
+      } else {
+        const body = await response.json();
+        const updatedQuizzes = category.quizzes.map((quiz) => {
+          if (quiz.id === quizId) {
+            quiz.content = body.quiz.content;
+            quiz.answer = body.quiz.answer;
+            if (quiz.errors) {
+              delete quiz.errors;
+            }
+          }
+          return quiz;
+        });
+        setErrors({});
+        setCategory({ ...category, quizzes: updatedQuizzes });
+        return true;
+      }
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`);
+      return false;
     }
   };
 
@@ -88,6 +164,7 @@ const CategoryShowPage = (props) => {
         curUserId = props.user.id;
         userLoggedIn = true;
       }
+      console.log(quizObject);
       return (
         <QuizTile
           {...quizObject}
@@ -98,18 +175,28 @@ const CategoryShowPage = (props) => {
           userLoggedIn={userLoggedIn}
           userVote={quizObject.votes.find((vote) => vote.userId === curUserId)}
           submitVote={submitVote}
+          patchQuiz={patchQuiz}
+          deleteQuiz={deleteQuiz}
+          numOfVotes={quizObject.votes.length}
         />
       );
     })
     .sort((quizA, quizB) => {
-      return quizB.props.totalScore - quizA.props.totalScore;
+      return quizB.props.totalScore + quizA.props.totalScore;
     });
+
+  // const quizForm = props.user ? <NewQuizForm categoryId={id} addNewQuiz={addNewQuiz} /> : null;
 
   const categoryName = category.name ? <div className="category-name">{categoryName}</div> : null;
 
   const errorList = Object.keys(errors) ? <ErrorList errors={errors} /> : null;
 
-  return <div className="quiz-section">{quizTiles}</div>;
+  return (
+    <div className="quiz-section">
+      {/* {quizForm} */}
+      {quizTiles}
+    </div>
+  );
 };
 
 export default CategoryShowPage;
