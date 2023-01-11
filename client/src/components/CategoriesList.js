@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CategoryTile from "./CategoryTile";
+import NewCategoryForm from "./NewCategoryForm";
 
 const CategoriesList = (props) => {
   const [categories, setCategories] = useState([]);
@@ -19,6 +20,10 @@ const CategoriesList = (props) => {
     }
   };
 
+  const addNewCategory = (category) => {
+    setCategories([...categories, category]);
+  };
+
   useEffect(() => {
     getCategories();
   }, []);
@@ -27,10 +32,13 @@ const CategoriesList = (props) => {
     return <CategoryTile key={`categoryTile-${categoryObject.id}`} {...categoryObject} />;
   });
 
+  // const categoryForm = props.user ? <NewCategoryForm addNewCategory={addNewCategory} /> : null;
+
   return (
     <div className="category-list-header">
+      {/* <div className="categories-list-form">{categoryForm}</div> */}
       <div className="categories-list">
-        <div>Categories:</div>
+        <div className="categories-list-header">Categories</div>
         {categoryTileComponents}
       </div>
     </div>

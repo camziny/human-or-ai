@@ -22,6 +22,7 @@
   "dependencies": {
     "@react-spring/web": "^9.6.1",
     "@use-gesture/react": "^10.2.23",
-    "passport": "0.5.3"
+    "passport": "0.5.3",
+    "react-dropzone": "^14.2.3"
   }
 }
