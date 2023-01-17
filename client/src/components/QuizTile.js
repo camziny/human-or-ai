@@ -21,6 +21,11 @@ const QuizTile = ({
   nextQuiz,
 }) => {
   const [isBeingEdited, setIsBeingEdited] = useState(false);
+  const [reveal, setReveal] = useState(false);
+
+  const revealAnswer = () => {
+    setReveal(!reveal);
+  };
 
   const buttons =
     creatorId === curUserId ? (
@@ -96,11 +101,12 @@ const QuizTile = ({
         totalScore={totalScore}
         userVote={userVote}
         submitVote={submitVote}
+        voteSubmitted={revealAnswer}
       />
       <div className="quiz-answer">
-        <p>{humanAvg}% of users guessed that this was created by a human</p>
-        <p>{aiAvg}% of users guessed that this was created by a AI</p>
-        <p>Answer: {answer}</p>
+        {reveal ? <p>{humanAvg}% of users guessed that this was created by a human</p> : null}
+        {reveal ? <p> {aiAvg}% of users guessed that this was created by a AI</p> : null}
+        {reveal ? <p>Answer: {answer}</p> : null}
         {buttons}
         <button
           className="next-button"
