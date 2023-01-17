@@ -88,7 +88,7 @@ p {
 }
 
 .red {
-  background-color: #ea9027;
+  background-color: white;
 }
 
 .green {
@@ -160,4 +160,25 @@ img {
 
 .inline-list {
   margin-top: 25px;
+}
+
+.next-button {
+  margin-top: 5px;
+  color: #07102d;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 5px;
+  background-color: white;
+}
+
+.finish-category-button {
+  margin-top: 30%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+  font-size: 36px;
+  border: 2px solid white;
+  border-radius: 10px;
 }

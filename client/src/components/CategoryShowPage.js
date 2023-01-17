@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import QuizTile from "./QuizTile";
 import translateServerErrors from "../services/translateServerErrors.js";
 import ErrorList from "./layout/ErrorList.js";
@@ -17,6 +17,14 @@ const CategoryShowPage = (props) => {
   useEffect(() => {
     getCategory();
   }, []);
+
+  const [currentQuiz, setCurrentQuiz] = useState(0);
+
+  const nextQuiz = () => {
+    if (quizTiles[currentQuiz].totalScore !== 0) {
+      setCurrentQuiz(currentQuiz + 1);
+    }
+  };
 
   const addNewQuiz = (quiz) => {
     setCategory({ ...category, quizzes: [...category.quizzes, quiz] });
@@ -156,34 +164,30 @@ const CategoryShowPage = (props) => {
     }
   };
 
-  const quizTiles = category.quizzes
-    .map((quizObject) => {
-      let curUserId = null;
-      let userLoggedIn = false;
-      if (props.user) {
-        curUserId = props.user.id;
-        userLoggedIn = true;
-      }
-      console.log(quizObject);
-      return (
-        <QuizTile
-          {...quizObject}
-          key={quizObject.id}
-          creatorId={quizObject.userId}
-          creator={quizObject.user}
-          curUserId={curUserId}
-          userLoggedIn={userLoggedIn}
-          userVote={quizObject.votes.find((vote) => vote.userId === curUserId)}
-          submitVote={submitVote}
-          patchQuiz={patchQuiz}
-          deleteQuiz={deleteQuiz}
-          numOfVotes={quizObject.votes.length}
-        />
-      );
-    })
-    .sort((quizA, quizB) => {
-      return quizB.props.totalScore + quizA.props.totalScore;
-    });
+  const quizTiles = category.quizzes.map((quizObject) => {
+    let curUserId = null;
+    let userLoggedIn = false;
+    if (props.user) {
+      curUserId = props.user.id;
+      userLoggedIn = true;
+    }
+    return (
+      <QuizTile
+        {...quizObject}
+        key={quizObject.id}
+        creatorId={quizObject.userId}
+        creator={quizObject.user}
+        curUserId={curUserId}
+        userLoggedIn={userLoggedIn}
+        userVote={quizObject.votes.find((vote) => vote.userId === curUserId)}
+        submitVote={submitVote}
+        patchQuiz={patchQuiz}
+        deleteQuiz={deleteQuiz}
+        numOfVotes={quizObject.votes.length}
+        nextQuiz={nextQuiz}
+      />
+    );
+  });
 
   // const quizForm = props.user ? <NewQuizForm categoryId={id} addNewQuiz={addNewQuiz} /> : null;
 
@@ -194,7 +198,13 @@ const CategoryShowPage = (props) => {
   return (
     <div className="quiz-section">
       {/* {quizForm} */}
-      {quizTiles}
+      {currentQuiz == quizTiles.length - 1 ? (
+        <Link to="/categories" className="finish-category-button">
+          Finish
+        </Link>
+      ) : (
+        quizTiles[currentQuiz]
+      )}
     </div>
   );
 };

@@ -24,6 +24,7 @@
     "@use-gesture/react": "^10.2.23",
     "multer-s3": "^3.0.1",
     "passport": "0.5.3",
-    "react-dropzone": "^14.2.3"
+    "react-dropzone": "^14.2.3",
+    "react-google-charts": "^4.0.0"
   }
 }

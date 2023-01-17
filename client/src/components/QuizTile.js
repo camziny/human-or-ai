@@ -18,9 +18,9 @@ const QuizTile = ({
   creator,
   creatorId,
   numOfVotes,
+  nextQuiz,
 }) => {
   const [isBeingEdited, setIsBeingEdited] = useState(false);
-  const [isShown, setIsShown] = useState(false);
 
   const buttons =
     creatorId === curUserId ? (
@@ -48,15 +48,26 @@ const QuizTile = ({
     setIsBeingEdited(!isBeingEdited);
   };
 
-  const show = (event) => {
-    setIsShown((curr) => !curr);
-  };
-
   let totalScore = 0;
   votes.forEach((vote) => (totalScore += vote.score));
 
-  let avg = 0;
-  votes.forEach((vote) => (avg += vote.score / numOfVotes));
+  let humanScore = 0;
+  votes.forEach((vote) => {
+    if (vote.score === 1) {
+      humanScore += 1;
+    }
+  });
+
+  let aiScore = 0;
+  votes.forEach((vote) => {
+    if (vote.score === -1) {
+      aiScore += 1;
+    }
+  });
+
+  const humanAvg = Math.round((humanScore / numOfVotes) * 100);
+
+  const aiAvg = Math.round((aiScore / numOfVotes) * 100);
 
   const quizImage = content ? (
     <div>
@@ -79,7 +90,6 @@ const QuizTile = ({
   return (
     <div className="quiz-tile">
       <h4>{quizImage}</h4>
-      {/* <p>{numOfVotes}</p> */}
       <QuizVote
         quizId={id}
         userLoggedIn={userLoggedIn}
@@ -88,9 +98,18 @@ const QuizTile = ({
         submitVote={submitVote}
       />
       <div className="quiz-answer">
-        <p>{avg * 100}% of users guessed that this was created by a human</p>
+        <p>{humanAvg}% of users guessed that this was created by a human</p>
+        <p>{aiAvg}% of users guessed that this was created by a AI</p>
         <p>Answer: {answer}</p>
         {buttons}
+        <button
+          className="next-button"
+          onClick={() => {
+            nextQuiz();
+          }}
+        >
+          Next
+        </button>
       </div>
     </div>
   );

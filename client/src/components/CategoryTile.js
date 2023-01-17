@@ -5,7 +5,7 @@ const CategoryTile = ({ id, name, description }) => {
   return (
     <div className="inline-list">
       <Link to={`/categories/${id}`}>{name}</Link>
-      <p>- {description}</p>
+      {/* <p>- {description}</p> */}
     </div>
   );
 };

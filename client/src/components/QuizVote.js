@@ -19,7 +19,6 @@ const QuizVote = (props) => {
       className={props.userVote && props.userVote.score === -1 ? "red" : ""}
       onClick={() => {
         props.submitVote(props.quizId, props.userVote, -1);
-        props.showAnswer();
       }}
     />
   ) : null;
@@ -28,7 +27,6 @@ const QuizVote = (props) => {
     <div className="quiz-voting-area">
       <div className="human-vote-button">{humanVote}</div>
       <div className="score-wrapper"></div>
-      {/* <p>{props.totalScore || 0}</p> */}
       <div className="ai-vote-button">{aiVote}</div>
     </div>
   );
