@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 
 const QuizVote = (props) => {
+  const [show, setShow] = useState(true);
+
   const humanVote = props.userLoggedIn ? (
     <input
       type="button"
       value="Human"
-      className={props.userVote && props.userVote.score === 1 ? "green" : ""}
+      className={props.userVote && props.userVote.score === 1 ? "vote-select-human" : ""}
       onClick={() => {
         props.submitVote(props.quizId, props.userVote, 1);
+        setShow(false);
+        props.voteSubmitted();
       }}
     />
   ) : null;
@@ -16,18 +20,20 @@ const QuizVote = (props) => {
     <input
       type="button"
       value="AI"
-      className={props.userVote && props.userVote.score === -1 ? "red" : ""}
+      className={props.userVote && props.userVote.score === -1 ? "vote-select-ai" : ""}
       onClick={() => {
         props.submitVote(props.quizId, props.userVote, -1);
+        setShow(false);
+        props.voteSubmitted();
       }}
     />
   ) : null;
 
   return (
     <div className="quiz-voting-area">
-      <div className="human-vote-button">{humanVote}</div>
+      {show ? <div className="human-vote-button">{humanVote}</div> : null}
       <div className="score-wrapper"></div>
-      <div className="ai-vote-button">{aiVote}</div>
+      {show ? <div className="ai-vote-button">{aiVote}</div> : null}
     </div>
   );
 };
