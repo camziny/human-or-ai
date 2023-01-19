@@ -104,18 +104,29 @@ const QuizTile = ({
         voteSubmitted={revealAnswer}
       />
       <div className="quiz-answer">
-        {reveal ? <p>{humanAvg}% of users guessed that this was created by a human</p> : null}
-        {reveal ? <p> {aiAvg}% of users guessed that this was created by a AI</p> : null}
-        {reveal ? <p>Answer: {answer}</p> : null}
+        {reveal ? (
+          <div className="human-avg-show">
+            {humanAvg}% of users guessed that this was created by a human.
+          </div>
+        ) : null}
+        {reveal ? (
+          <div className="ai-avg-show">
+            {" "}
+            {aiAvg}% of users guessed that this was created by a AI.
+          </div>
+        ) : null}
+        {reveal ? <div className="answer-show">Answer: {answer}</div> : null}
         {buttons}
-        <button
-          className="next-button"
-          onClick={() => {
-            nextQuiz();
-          }}
-        >
-          Next
-        </button>
+        {reveal ? (
+          <button
+            className="next-button"
+            onClick={() => {
+              nextQuiz();
+            }}
+          >
+            Next
+          </button>
+        ) : null}
       </div>
     </div>
   );

@@ -29,4 +29,4 @@ class CategorySeeder {
   }
 }
 
-export default CategorySeeder.js;
+export default CategorySeeder;
