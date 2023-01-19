@@ -8,7 +8,7 @@ const TopBar = ({ user }) => {
       <Link to="/user-sessions/new">Sign In</Link>
     </li>,
     <li key="sign-up">
-      <Link to="/users/new" className="button">
+      <Link to="/users/new" className="sign-up-button">
         Sign Up
       </Link>
     </li>,
