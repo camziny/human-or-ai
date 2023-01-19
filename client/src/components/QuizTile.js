@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import QuizVote from "./QuizVote.js";
 import EditQuizForm from "./EditQuizForm.js";
@@ -25,6 +25,7 @@ const QuizTile = ({
 
   const revealAnswer = () => {
     setReveal(!reveal);
+    setTimeout(nextQuiz, 3000);
   };
 
   const buttons =
@@ -104,6 +105,7 @@ const QuizTile = ({
         voteSubmitted={revealAnswer}
       />
       <div className="quiz-answer">
+        {reveal ? <div className="answer-show">Answer: {answer}</div> : null}
         {reveal ? (
           <div className="human-avg-show">
             {humanAvg}% of users guessed that this was created by a human.
@@ -115,18 +117,7 @@ const QuizTile = ({
             {aiAvg}% of users guessed that this was created by a AI.
           </div>
         ) : null}
-        {reveal ? <div className="answer-show">Answer: {answer}</div> : null}
         {buttons}
-        {reveal ? (
-          <button
-            className="next-button"
-            onClick={() => {
-              nextQuiz();
-            }}
-          >
-            Next
-          </button>
-        ) : null}
       </div>
     </div>
   );
