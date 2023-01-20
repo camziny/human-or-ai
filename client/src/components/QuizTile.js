@@ -25,7 +25,7 @@ const QuizTile = ({
 
   const revealAnswer = () => {
     setReveal(!reveal);
-    setTimeout(nextQuiz, 3000);
+    setTimeout(nextQuiz, 2500);
   };
 
   const buttons =
