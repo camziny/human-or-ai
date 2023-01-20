@@ -218,7 +218,7 @@ class QuizSeeder {
         content:
           "https://trip-production.s3.amazonaws.com/a+painting+of+the+collapse+of+the+21st+century+in+the+style+of+Salvador+Dali+(google).png",
         answer: "Human",
-        categoryId: 5,
+        categoryId: 4,
         userId: 2,
       },
       {
