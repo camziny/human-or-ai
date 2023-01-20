@@ -30,8 +30,8 @@ const SignInForm = () => {
   };
 
   const onSubmit = async (event) => {
-    event.preventDefault()
-    validateInput(userPayload)
+    event.preventDefault();
+    validateInput(userPayload);
     try {
       if (Object.keys(errors).length === 0) {
         const response = await fetch("/api/v1/user-sessions", {
@@ -39,20 +39,20 @@ const SignInForm = () => {
           body: JSON.stringify(userPayload),
           headers: new Headers({
             "Content-Type": "application/json",
-          })
-        })
-        if(!response.ok) {
-          const errorMessage = `${response.status} (${response.statusText})`
-          const error = new Error(errorMessage)
-          throw(error)
+          }),
+        });
+        if (!response.ok) {
+          const errorMessage = `${response.status} (${response.statusText})`;
+          const error = new Error(errorMessage);
+          throw error;
         }
-        const userData = await response.json()
-        setShouldRedirect(true)
+        const userData = await response.json();
+        setShouldRedirect(true);
       }
-    } catch(err) {
-      console.error(`Error in fetch: ${err.message}`)
+    } catch (err) {
+      console.error(`Error in fetch: ${err.message}`);
     }
-  }
+  };
 
   const onInputChange = (event) => {
     setUserPayload({
@@ -70,16 +70,23 @@ const SignInForm = () => {
       <h1>Sign In</h1>
       <form>
         <div>
-          <label>
+          <label className="email">
             Email
-            <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
+            <input
+              className="registration-input"
+              type="text"
+              name="email"
+              value={userPayload.email}
+              onChange={onInputChange}
+            />
             <FormError error={errors.email} />
           </label>
         </div>
         <div>
-          <label>
+          <label className="password">
             Password
             <input
+              className="registration-input"
               type="password"
               name="password"
               value={userPayload.password}
@@ -89,7 +96,7 @@ const SignInForm = () => {
           </label>
         </div>
         <div>
-          <input type="submit" className="button" value="Sign In" />
+          <input className="registration-button" type="submit" value="Sign In" />
         </div>
       </form>
     </div>

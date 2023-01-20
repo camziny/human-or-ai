@@ -90,16 +90,23 @@ const RegistrationForm = () => {
       <h1>Register</h1>
       <form onSubmit={onSubmit}>
         <div>
-          <label>
+          <label className="email">
             Email
-            <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
+            <input
+              className="registration-input"
+              type="text"
+              name="email"
+              value={userPayload.email}
+              onChange={onInputChange}
+            />
             <FormError error={errors.email} />
           </label>
         </div>
         <div>
-          <label>
+          <label className="password">
             Password
             <input
+              className="registration-input"
               type="password"
               name="password"
               value={userPayload.password}
@@ -109,9 +116,10 @@ const RegistrationForm = () => {
           </label>
         </div>
         <div>
-          <label>
+          <label className="password-confirmation">
             Password Confirmation
             <input
+              className="registration-input"
               type="password"
               name="passwordConfirmation"
               value={userPayload.passwordConfirmation}
@@ -121,7 +129,7 @@ const RegistrationForm = () => {
           </label>
         </div>
         <div>
-          <input type="submit" className="button" value="Register" />
+          <input type="submit" className="registration-button" value="Register" />
         </div>
       </form>
     </div>

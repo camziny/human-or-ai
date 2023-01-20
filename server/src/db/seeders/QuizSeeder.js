@@ -230,13 +230,6 @@ class QuizSeeder {
       },
       {
         content:
-          "https://trip-production.s3.amazonaws.com/a+painting+of+frida+kahlo+about+life+in+the+style+of+frida+kahlo.png",
-        answer: "AI",
-        categoryId: 4,
-        userId: 2,
-      },
-      {
-        content:
           "https://trip-production.s3.amazonaws.com/a+painting+of+frida+kahlo+thinking+about+life+in+the+style+of+frida+kahlo+(google).png",
         answer: "Human",
         categoryId: 4,
