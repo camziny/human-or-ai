@@ -12,6 +12,7 @@ const QuizTile = ({
   errors,
   curUserId,
   userLoggedIn,
+  userHasVoted,
   userVote,
   submitVote,
   votes,
@@ -99,6 +100,7 @@ const QuizTile = ({
       <QuizVote
         quizId={id}
         userLoggedIn={userLoggedIn}
+        userHasVoted={userHasVoted}
         totalScore={totalScore}
         userVote={userVote}
         submitVote={submitVote}
