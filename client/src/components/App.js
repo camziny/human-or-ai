@@ -31,7 +31,9 @@ const App = (props) => {
     <Router>
       <TopBar user={currentUser} />
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/">
+          <Home user={currentUser} />
+        </Route>
         <Route exact path="/categories">
           <CategoriesList user={currentUser} />
         </Route>
