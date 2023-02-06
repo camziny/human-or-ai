@@ -4,6 +4,7 @@ import ErrorList from "./layout/ErrorList";
 import Dropzone from "react-dropzone";
 
 const NewQuizForm = (props) => {
+  // const [categories, setCategories] = useState([]);
   const [newQuiz, setNewQuiz] = useState({
     content: {},
     answer: "",
@@ -23,7 +24,7 @@ const NewQuizForm = (props) => {
   //     if (!response.ok) {
   //       throw new Error(`${response.status} (${response.statusText})`);
   //     } else {
-  //       const body = response.json();
+  //       const body = await response.json();
   //       setCategories(body.categories);
   //     }
   //   } catch (error) {
@@ -41,7 +42,9 @@ const NewQuizForm = (props) => {
     }
     if (Object.keys(preFetchErrors).length) return SetErrors(preFetchErrors);
     else SetErrors({});
+
     const { categoryId } = props;
+
     try {
       const body = new FormData();
       body.append("content", newQuiz.content);
@@ -60,11 +63,11 @@ const NewQuizForm = (props) => {
         throw new Error(`${response.status} (${response.statusText})`);
       } else {
         const body = await response.json();
-        props.addNewQuiz(body.quiz);
         clearForm();
+        props.addNewQuiz(body.quiz);
       }
     } catch (error) {
-      console.error(error.message);
+      console.log(error.message);
     }
   };
 
@@ -101,7 +104,7 @@ const NewQuizForm = (props) => {
 
   return (
     <div className="new-quiz-form-container">
-      <h4>Add More Content</h4>
+      <div className="new-quiz-form-container-header">Add Content To This Category</div>
       <ErrorList errors={errors} />
       <form className="new-quiz-form" onSubmit={handleSubmit}>
         <Dropzone onDrop={handleImageUpload}>
@@ -111,14 +114,14 @@ const NewQuizForm = (props) => {
                 <input {...getInputProps()} />
                 <div className="button-group">
                   <input
-                    className="button"
+                    className="quiz-form-add-image-button"
                     type="add"
                     onChange={handleInputChange}
                     value="Add Image"
                   />
-                </div>
-                <div className="drag-n-drop">
-                  <ul>(Click to add, or drag and drop)</ul>
+                  <div className="drag-n-drop">
+                    <ul>(Click to add, or drag and drop)</ul>
+                  </div>
                 </div>
               </div>
             </section>
@@ -130,6 +133,7 @@ const NewQuizForm = (props) => {
           <textarea
             name="answer"
             placeholder="Human or AI"
+            className="quiz-form-answer-input-field"
             onChange={handleInputChange}
             value={newQuiz.answer}
           />

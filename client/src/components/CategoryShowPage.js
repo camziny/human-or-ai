@@ -189,7 +189,7 @@ const CategoryShowPage = (props) => {
     );
   });
 
-  // const quizForm = props.user ? <NewQuizForm categoryId={id} addNewQuiz={addNewQuiz} /> : null;
+  const quizForm = props.user ? <NewQuizForm categoryId={id} addNewQuiz={addNewQuiz} /> : null;
 
   const categoryName = category.name ? <div className="category-name">{categoryName}</div> : null;
 
@@ -197,14 +197,16 @@ const CategoryShowPage = (props) => {
 
   return (
     <div className="quiz-section">
-      {/* {quizForm} */}
-      {currentQuiz == quizTiles.length - 1 ? (
-        <Link to="/categories" className="finish-category-button">
-          Finish
-        </Link>
-      ) : (
-        quizTiles[currentQuiz]
-      )}
+      <div className="quiz-tiles">
+        {currentQuiz == quizTiles.length - 1 ? (
+          <Link to="/categories" className="finish-category-button">
+            Finish
+          </Link>
+        ) : (
+          quizTiles[currentQuiz]
+        )}
+      </div>
+      {quizForm}
     </div>
   );
 };
