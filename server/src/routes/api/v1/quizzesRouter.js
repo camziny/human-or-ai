@@ -7,7 +7,7 @@ import quizVotesRouter from "./quizVotesRouter.js";
 const quizzesRouter = new express.Router();
 
 quizzesRouter.use("/:id/votes", quizVotesRouter);
-quizzesRouter.delete("id", async (req, res) => {
+quizzesRouter.delete("/:id", async (req, res) => {
   try {
     const quizToDelete = await Quiz.query().findById(req.params.id);
     if (req.user && quizToDelete.userId === req.user.id) {

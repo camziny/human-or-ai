@@ -32,14 +32,14 @@ const QuizTile = ({
   const buttons =
     creatorId === curUserId ? (
       <div className="review-edit-delete">
-        <input
+        {/* <input
           className="button"
           type="button"
           value="Edit"
           onClick={() => {
             toggleEdit();
           }}
-        />
+        /> */}
         <input
           className="button"
           type="button"
