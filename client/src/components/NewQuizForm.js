@@ -6,8 +6,8 @@ import Dropzone from "react-dropzone";
 const NewQuizForm = (props) => {
   // const [categories, setCategories] = useState([]);
   const [newQuiz, setNewQuiz] = useState({
-    content: {},
     answer: "",
+    content: {},
   });
   const [errors, SetErrors] = useState({});
   const [uploadedImage, setUpLoadedImage] = useState({
@@ -63,7 +63,6 @@ const NewQuizForm = (props) => {
         throw new Error(`${response.status} (${response.statusText})`);
       } else {
         const body = await response.json();
-        clearForm();
         props.addNewQuiz(body.quiz);
       }
     } catch (error) {
@@ -78,7 +77,8 @@ const NewQuizForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    postQuiz();
+    postQuiz(newQuiz);
+    clearForm();
   };
 
   const handleImageUpload = (acceptedImage) => {
@@ -130,7 +130,7 @@ const NewQuizForm = (props) => {
         <img src={uploadedImage.preview} />
         <label>
           Answer:
-          <textarea
+          <input
             name="answer"
             placeholder="Human or AI"
             className="quiz-form-answer-input-field"

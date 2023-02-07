@@ -14,6 +14,10 @@ const CategoryShowPage = (props) => {
   });
   const [errors, setErrors] = useState({});
 
+  const addNewQuiz = (quiz) => {
+    setCategory({ ...category, quizzes: [...category.quizzes, quiz] });
+  };
+
   useEffect(() => {
     getCategory();
   }, []);
@@ -24,10 +28,6 @@ const CategoryShowPage = (props) => {
     if (quizTiles[currentQuiz].totalScore !== 0) {
       setCurrentQuiz(currentQuiz + 1);
     }
-  };
-
-  const addNewQuiz = (quiz) => {
-    setCategory({ ...category, quizzes: [...category.quizzes, quiz] });
   };
 
   const getCategory = async () => {
@@ -171,6 +171,7 @@ const CategoryShowPage = (props) => {
       curUserId = props.user.id;
       userLoggedIn = true;
     }
+    console.log(quizObject);
     return (
       <QuizTile
         {...quizObject}
