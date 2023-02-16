@@ -32,13 +32,24 @@ const CategoriesList = (props) => {
     return <CategoryTile key={`categoryTile-${categoryObject.id}`} {...categoryObject} />;
   });
 
-  // const categoryForm = props.user ? <NewCategoryForm addNewCategory={addNewCategory} /> : null;
+  const adminUsers = ["cameronziny@gmail.com", "humanoraiadmin@gmail.com"];
+
+  const categoryForm = adminUsers.map((userObject) => {
+    let curUserAdminCheck = null;
+    if (props.user) {
+      curUserAdminCheck = props.user.email;
+      if (curUserAdminCheck === userObject) {
+        return <NewCategoryForm addNewCategory={addNewCategory} />;
+      }
+    }
+  });
 
   return (
     <div className="category-list-header">
       {/* <div className="categories-list-form">{categoryForm}</div> */}
       <div className="categories-list-header">Categories</div>
       <div className="categories-list-components">{categoryTileComponents}</div>
+      {categoryForm}
     </div>
   );
 };

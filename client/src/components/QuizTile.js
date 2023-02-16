@@ -110,13 +110,13 @@ const QuizTile = ({
         {reveal ? <div className="answer-show">Answer: {answer}</div> : null}
         {reveal ? (
           <div className="human-avg-show">
-            {humanAvg}% of users guessed that this was created by a human.
+            <span className="human-avg-percent">{humanAvg}%</span> of users guessed human
           </div>
         ) : null}
         {reveal ? (
           <div className="ai-avg-show">
             {" "}
-            {aiAvg}% of users guessed that this was created by a AI.
+            <span className="ai-avg-percent">{aiAvg}%</span> of users guessed AI
           </div>
         ) : null}
         {buttons}

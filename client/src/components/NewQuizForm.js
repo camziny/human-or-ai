@@ -128,7 +128,7 @@ const NewQuizForm = (props) => {
           )}
         </Dropzone>
         <img src={uploadedImage.preview} />
-        <label>
+        <label className="quiz-form-answer-label">
           Answer:
           <input
             name="answer"
@@ -138,7 +138,7 @@ const NewQuizForm = (props) => {
             value={newQuiz.answer}
           />
         </label>
-        <input className="button" type="submit" />
+        <input className="new-quiz-form-submit-button" type="submit" />
       </form>
     </div>
   );

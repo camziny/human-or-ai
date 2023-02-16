@@ -153,6 +153,18 @@ p {
   animation: 1s anim-lineUp ease-out;
 }
 
+.human-avg-percent {
+  color: green;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.ai-avg-percent {
+  color: red;
+  font-size: 32px;
+  font-weight: 800;
+}
+
 .answer-show {
   font-size: 24px;
   font-weight: 700;
@@ -327,6 +339,10 @@ img {
   justify-content: center;
   text-align: center;
 }
+.quiz-section-header {
+  margin-top: 20px;
+  font-size: 20px;
+}
 
 .home-logo {
   max-width: 200px;
@@ -429,9 +445,93 @@ img {
   justify-content: center;
 }
 
+.quiz-form-answer-label {
+  color: white;
+  font-size: 16px;
+}
+
 .quiz-form-answer-input-field {
   max-width: 400px;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 5px;
+}
+
+.category-name-input {
+  max-width: 600px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.category-description-input {
+  max-width: 600px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.new-quiz-form-submit-button {
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 8px;
+  width: 120px;
+  background-color: #07102d;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.new-quiz-form-submit-button:hover {
+  border: 2px solid #07102d;
+  background-color: white;
+  color: #07102d;
+  transition: 0.1s ease-in;
+}
+
+.new-category-form-header {
+  text-align: center;
+  margin-top: 100px;
+  font-size: 20px;
+  font-weight: 400px;
+}
+
+.new-category-form-add-button {
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+  border: 4px solid white;
+  border-radius: 10px;
+  padding: 8px;
+  width: 120px;
+  background-color: #07102d;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.new-category-form-add-button:hover {
+  border: 4px solid #07102d;
+  background-color: white;
+  color: #07102d;
+  transition: 0.1s ease-in;
+}
+
+.new-category-name {
+  text-align: center;
+  color: white;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.new-category-description {
+  text-align: center;
+  color: white;
+  margin-top: 10px;
+  font-size: 16px;
 }
