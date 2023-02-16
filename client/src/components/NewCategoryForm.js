@@ -57,12 +57,13 @@ const NewCategoryForm = (props) => {
 
   return (
     <div className="new-category-form">
-      <h4>Add a Category</h4>
+      <div className="new-category-form-header">Add a Category</div>
       <ErrorList errors={errors} />
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="new-category-name">
           Name:
           <input
+            className="category-name-input"
             type="text"
             name="name"
             placeholder="type of content"
@@ -70,9 +71,10 @@ const NewCategoryForm = (props) => {
             value={newCategory.name}
           />
         </label>
-        <label>
+        <label className="new-category-description">
           Description:
           <input
+            className="category-description-input"
             type="text"
             name="description"
             placeholder="category description"
@@ -80,7 +82,7 @@ const NewCategoryForm = (props) => {
             vale={newCategory.description}
           />
         </label>
-        <input className="button" type="submit" value="Add Category" />
+        <input className="new-category-form-add-button" type="submit" value="Add" />
       </form>
     </div>
   );

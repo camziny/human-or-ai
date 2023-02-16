@@ -164,6 +164,20 @@ const CategoryShowPage = (props) => {
     }
   };
 
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const adminUsers = ["cameronziny@gmail.com", "humanoraiadmin@gmail.com"];
+
+  const quizForm = adminUsers.map((userObject) => {
+    let curUserAdminCheck = null;
+    if (props.user) {
+      curUserAdminCheck = props.user.email;
+      if (curUserAdminCheck === userObject) {
+        return <NewQuizForm categoryId={id} addNewQuiz={addNewQuiz} />;
+      }
+    }
+  });
+
   const quizTiles = category.quizzes.map((quizObject) => {
     let curUserId = null;
     let userLoggedIn = false;
@@ -171,7 +185,6 @@ const CategoryShowPage = (props) => {
       curUserId = props.user.id;
       userLoggedIn = true;
     }
-    console.log(quizObject);
     return (
       <QuizTile
         {...quizObject}
@@ -190,14 +203,16 @@ const CategoryShowPage = (props) => {
     );
   });
 
-  const quizForm = props.user ? <NewQuizForm categoryId={id} addNewQuiz={addNewQuiz} /> : null;
-
   const categoryName = category.name ? <div className="category-name">{categoryName}</div> : null;
 
   const errorList = Object.keys(errors) ? <ErrorList errors={errors} /> : null;
 
   return (
     <div className="quiz-section">
+      <div className="quiz-section-header">
+        For each image, guess whether you think it was created by a human or by artificial
+        intelligence.
+      </div>
       <div className="quiz-tiles">
         {currentQuiz == quizTiles.length - 1 ? (
           <Link to="/categories" className="finish-category-button">
