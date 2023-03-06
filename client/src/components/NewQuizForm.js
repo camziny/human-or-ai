@@ -4,33 +4,15 @@ import ErrorList from "./layout/ErrorList";
 import Dropzone from "react-dropzone";
 
 const NewQuizForm = (props) => {
-  // const [categories, setCategories] = useState([]);
   const [newQuiz, setNewQuiz] = useState({
     answer: "",
+    prompt: "",
     content: {},
   });
   const [errors, SetErrors] = useState({});
   const [uploadedImage, setUpLoadedImage] = useState({
     preview: "",
   });
-
-  // useEffect(() => {
-  //   fetchCategories();
-  // }, []);
-
-  // const fetchCategories = async () => {
-  //   try {
-  //     const response = await fetch("/api/v1/categories");
-  //     if (!response.ok) {
-  //       throw new Error(`${response.status} (${response.statusText})`);
-  //     } else {
-  //       const body = await response.json();
-  //       setCategories(body.categories);
-  //     }
-  //   } catch (error) {
-  //     console.error(error.message);
-  //   }
-  // };
 
   const postQuiz = async () => {
     let preFetchErrors = {};
@@ -48,6 +30,7 @@ const NewQuizForm = (props) => {
     try {
       const body = new FormData();
       body.append("content", newQuiz.content);
+      body.append("prompt", newQuiz.prompt);
       body.append("answer", newQuiz.answer);
       const response = await fetch(`/api/v1/categories/${categoryId}/quizzes`, {
         method: "POST",
@@ -95,6 +78,7 @@ const NewQuizForm = (props) => {
   const clearForm = () => {
     setNewQuiz({
       content: {},
+      prompt: "",
       answer: "",
     });
     setUpLoadedImage({
@@ -128,6 +112,16 @@ const NewQuizForm = (props) => {
           )}
         </Dropzone>
         <img src={uploadedImage.preview} />
+        <label className="quiz-form-prompt-label">
+          Prompt:
+          <input
+            name="prompt"
+            placeholder="Description"
+            className="quiz-form-answer-input-field"
+            onChange={handleInputChange}
+            value={newQuiz.prompt}
+          />
+        </label>
         <label className="quiz-form-answer-label">
           Answer:
           <input

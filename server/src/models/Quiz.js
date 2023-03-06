@@ -8,9 +8,10 @@ class Quiz extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["content", "answer", "categoryId", "userId"],
+      required: ["content", "prompt", "answer", "categoryId", "userId"],
       properties: {
         content: { type: "string" },
+        prompt: { type: "string" },
         answer: { type: "string" },
         categoryId: { type: ["string", "integer"] },
         userId: { type: ["string", "integer"] },

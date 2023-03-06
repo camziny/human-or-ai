@@ -341,7 +341,7 @@ img {
 }
 .quiz-section-header {
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .home-logo {
@@ -450,6 +450,11 @@ img {
   font-size: 16px;
 }
 
+.quiz-form-prompt-label {
+  color: white;
+  font-size: 16px;
+}
+
 .quiz-form-answer-input-field {
   max-width: 400px;
   display: block;
@@ -534,4 +539,32 @@ img {
   color: white;
   margin-top: 10px;
   font-size: 16px;
+}
+
+.quiz-delete-button {
+  color: white;
+  font-weight: 500;
+  font-size: 12px;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 4px;
+  width: 80px;
+  background-color: #07102d;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+}
+
+.quiz-delete-button:hover {
+  border: 2px solid #07102d;
+  background-color: white;
+  color: #07102d;
+  transition: 0.1s ease-in;
+}
+
+.quiz-prompt {
+  font-size: 26px;
+  font-weight: 600;
+  margin-top: 40px;
 }

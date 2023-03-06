@@ -46,7 +46,6 @@ const CategoriesList = (props) => {
 
   return (
     <div className="category-list-header">
-      {/* <div className="categories-list-form">{categoryForm}</div> */}
       <div className="categories-list-header">Categories</div>
       <div className="categories-list-components">{categoryTileComponents}</div>
       {categoryForm}

@@ -8,13 +8,14 @@ import uploadImage from "../../../services/uploadImage.js";
 const categoryQuizzesRouter = new express.Router({ mergeParams: true });
 
 categoryQuizzesRouter.post("/", uploadImage.single("content"), async (req, res) => {
-  const { answer } = cleanUserInput(req.body);
+  const { prompt, answer } = cleanUserInput(req.body);
   const { categoryId } = req.params;
   const userId = req.user.id;
 
   try {
     const newQuiz = await Quiz.query().insertAndFetch({
       content: req.file.location,
+      prompt,
       answer,
       categoryId,
       userId,

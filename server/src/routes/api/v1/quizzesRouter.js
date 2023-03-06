@@ -24,17 +24,18 @@ quizzesRouter.delete("/:id", async (req, res) => {
 
 quizzesRouter.patch("/:id", async (req, res) => {
   const { content } = req.body;
-  const { answer } = cleanUserInput(req.body);
+  const { prompt, answer } = cleanUserInput(req.body);
 
   try {
     if (!answer) {
-      return res.status(422).json({ "Error:": "Answer field must have a value" });
+      return res.status(422).json({ "Error:": "Prompt and Answer field must have a value" });
     }
 
     const quizToEdit = await Quiz.query().findById(req.params.id);
     if (quizToEdit.userId === req.user.id) {
       const updatedQuiz = await Quiz.query().patchAndFetchById(req.params.id, {
         content,
+        prompt,
         answer,
       });
       res.status(200).json({ quiz: updatedQuiz });

@@ -6,6 +6,7 @@ import EditQuizForm from "./EditQuizForm.js";
 const QuizTile = ({
   id,
   content,
+  prompt,
   answer,
   deleteQuiz,
   patchQuiz,
@@ -41,9 +42,9 @@ const QuizTile = ({
           }}
         /> */}
         <input
-          className="button"
+          className="quiz-delete-button"
           type="button"
-          value="Delete"
+          value="Delete Item"
           onClick={() => {
             deleteQuiz(id);
           }}
@@ -88,6 +89,7 @@ const QuizTile = ({
         patchQuiz={patchQuiz}
         id={id}
         content={content}
+        prompt={prompt}
         toggleEdit={toggleEdit}
         errors={errors}
       />
@@ -96,6 +98,7 @@ const QuizTile = ({
 
   return (
     <div className="quiz-tile">
+      <div className="quiz-prompt">{prompt}</div>
       <h4>{quizImage}</h4>
       <QuizVote
         quizId={id}
