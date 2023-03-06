@@ -11,13 +11,13 @@ const NewCategoryForm = (props) => {
   const [errors, setErrors] = useState({});
 
   const postCategory = async () => {
-    const { id } = props;
     try {
-      const response = await fetch(`/api/v1/categories/${id}`, {
+      const response = await fetch("/api/v1/categories", {
         method: "POST",
-        headers: { Content: "application/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newCategory),
       });
+      console.log(newCategory);
       if (!response.ok) {
         if (response.status === 422) {
           const body = await response.json();
@@ -27,8 +27,8 @@ const NewCategoryForm = (props) => {
         throw new Error(`${response.status} (${response.statusText})`);
       } else {
         const body = await response.json();
-        clearForm();
         props.addNewCategory(body.category);
+        clearForm();
       }
     } catch (error) {
       console.error(error.message);
@@ -79,7 +79,7 @@ const NewCategoryForm = (props) => {
             name="description"
             placeholder="category description"
             onChange={handleInputChange}
-            vale={newCategory.description}
+            value={newCategory.description}
           />
         </label>
         <input className="new-category-form-add-button" type="submit" value="Add" />

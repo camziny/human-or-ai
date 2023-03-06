@@ -2,7 +2,7 @@ import VoteSerializer from "./VoteSerializer.js";
 
 class QuizSerializer {
   static async getSummary(quiz) {
-    const allowedAttributes = ["id", "content", "answer", "userId"];
+    const allowedAttributes = ["id", "content", "prompt", "answer", "userId"];
     let serializedQuiz = {};
     for (const attribute of allowedAttributes) {
       serializedQuiz[attribute] = quiz[attribute];
