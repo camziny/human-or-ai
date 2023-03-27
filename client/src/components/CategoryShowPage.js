@@ -23,12 +23,23 @@ const CategoryShowPage = (props) => {
   }, []);
 
   const [currentQuiz, setCurrentQuiz] = useState(0);
+  const [userScore, setUserScore] = useState(0);
 
   const nextQuiz = () => {
     if (quizTiles[currentQuiz].totalScore !== 0) {
       setCurrentQuiz(currentQuiz + 1);
     }
   };
+
+  // const trackUserScore = () => {
+  //   if (props.userVote.score === 1 && quizTiles[currentQuiz].answer === "Human") {
+  //     setUserScore(+1);
+  //   } else {
+  //     if (props.userVote.score === -1 && quizTiles[currentQuiz].answer === "AI") {
+  //       setUserScore(+1);
+  //     }
+  //   }
+  // };
 
   const getCategory = async () => {
     try {
@@ -164,8 +175,6 @@ const CategoryShowPage = (props) => {
     }
   };
 
-  const [isAdmin, setIsAdmin] = useState(false);
-
   const adminUsers = ["cameronziny@gmail.com", "humanoraiadmin@gmail.com"];
 
   const quizForm = adminUsers.map((userObject) => {
@@ -173,7 +182,7 @@ const CategoryShowPage = (props) => {
     if (props.user) {
       curUserAdminCheck = props.user.email;
       if (curUserAdminCheck === userObject) {
-        return <NewQuizForm categoryId={id} addNewQuiz={addNewQuiz} />;
+        return <NewQuizForm key={id} categoryId={id} addNewQuiz={addNewQuiz} />;
       }
     }
   });
@@ -185,6 +194,17 @@ const CategoryShowPage = (props) => {
       curUserId = props.user.id;
       userLoggedIn = true;
     }
+    // const userSelection = quizObject.votes.find((vote) => vote.userId === curUserId);
+    // if (userSelection.score === 1 && quizObject.answer == "Human") {
+    //   setUserScore(+1);
+    // } else {
+    //   if (userSelection.score === -1 && quizObject.answer === "AI") {
+    //     setUserScore(+1);
+    //   }
+    // }
+    // const userSelection = quizObject.votes.find((vote) => vote.userId === curUserId);
+    // console.log(userSelection.score);
+    // console.log(quizObject.answer);
     return (
       <QuizTile
         {...quizObject}
@@ -214,7 +234,7 @@ const CategoryShowPage = (props) => {
         intelligence.
       </div>
       <div className="quiz-tiles">
-        {currentQuiz == quizTiles.length - 1 ? (
+        {currentQuiz === quizTiles.length - 1 ? (
           <Link to="/categories" className="finish-category-button">
             Finish
           </Link>

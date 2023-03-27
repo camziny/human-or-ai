@@ -1,9 +1,10 @@
+import React from "react";
 import { Chart } from "react-google-charts";
 
 const PieChart = (props) => {
   const data = [
-    ["Human", { humanPercent }],
-    ["AI", { aiPercent }],
+    ["Human", props.humanPercent],
+    ["AI", props.aiPercent],
   ];
 
   const options = {

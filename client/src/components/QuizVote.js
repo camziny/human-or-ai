@@ -29,11 +29,16 @@ const QuizVote = (props) => {
     />
   ) : null;
 
+  // const displayVote = props.voteSubmitted ? (
+  //   <input type="button" value={props.userVote.score === -1 ? "You voted AI" : "You voted Human"} />
+  // ) : null;
+
   return (
     <div className="quiz-voting-area">
       {show ? <div className="human-vote-button">{humanVote}</div> : null}
       <div className="score-wrapper"></div>
       {show ? <div className="ai-vote-button">{aiVote}</div> : null}
+      {/* {show ? <div className="display-vote-button">{displayVote}</div> : null} */}
     </div>
   );
 };
