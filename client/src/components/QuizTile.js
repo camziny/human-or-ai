@@ -26,21 +26,13 @@ const QuizTile = ({
   const [reveal, setReveal] = useState(false);
 
   const revealAnswer = () => {
-    setReveal(!reveal);
+    setReveal(true);
     setTimeout(nextQuiz, 2500);
   };
 
   const buttons =
     creatorId === curUserId ? (
       <div className="review-edit-delete">
-        {/* <input
-          className="button"
-          type="button"
-          value="Edit"
-          onClick={() => {
-            toggleEdit();
-          }}
-        /> */}
         <input
           className="quiz-delete-button"
           type="button"
