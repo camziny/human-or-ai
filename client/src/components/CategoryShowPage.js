@@ -31,16 +31,6 @@ const CategoryShowPage = (props) => {
     }
   };
 
-  // const trackUserScore = () => {
-  //   if (props.userVote.score === 1 && quizTiles[currentQuiz].answer === "Human") {
-  //     setUserScore(+1);
-  //   } else {
-  //     if (props.userVote.score === -1 && quizTiles[currentQuiz].answer === "AI") {
-  //       setUserScore(+1);
-  //     }
-  //   }
-  // };
-
   const getCategory = async () => {
     try {
       const response = await fetch(`/api/v1/categories/${id}`);
