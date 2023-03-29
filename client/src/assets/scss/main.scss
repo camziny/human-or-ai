@@ -166,7 +166,16 @@ p {
 }
 
 .answer-show {
-  font-size: 24px;
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-decoration: wavy;
+  animation: 0.8s anim-lineUp ease-out;
+}
+
+.total-votes-show {
+  font-size: 18px;
   font-weight: 700;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -605,4 +614,269 @@ img {
   font-size: 26px;
   font-weight: 600;
   margin-top: 40px;
+}
+
+@media only screen and (max-width: 400px) {
+  .top-bar-left {
+    font-size: 14px;
+  }
+  .top-bar-right {
+    font-size: 14px;
+  }
+  .sign-in-button {
+    font-size: 14px;
+  }
+  .sign-up-button {
+    font-size: 14px;
+  }
+  .sign-out-button {
+    margin-left: 10%;
+    margin-right: 90%;
+  }
+  .home-link {
+    font-size: 18px;
+    margin-left: 50%;
+    margin-right: 50%;
+  }
+
+  .quiz-image {
+    max-width: 250px;
+    max-height: 250px;
+  }
+
+  .display-vote-button {
+    font-size: 16px;
+    padding: 8px;
+    max-height: 60px;
+  }
+
+  .continue-button {
+    font-size: 16px;
+    padding: 8px;
+    max-height: 40px;
+  }
+
+  .answer-show {
+    margin-top: 5px;
+    font-size: 20px;
+  }
+
+  .human-avg-show {
+    margin-top: 5px;
+  }
+
+  .human-avg-percent {
+    color: green;
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  .ai-avg-percent {
+    color: red;
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  .quiz-prompt {
+    margin-top: 7px;
+  }
+
+  .quiz-section-header {
+    font-size: 12px;
+  }
+
+  .finish-category-button {
+    padding: 10px;
+    width: 50%;
+  }
+
+  .human-vote-button input {
+    width: 100px;
+    padding: 5px;
+  }
+
+  .ai-vote-button input {
+    width: 100px;
+    padding: 5px;
+  }
+
+  .quiz-voting-area {
+    height: 1px;
+    margin-top: 10px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .top-bar-left {
+    font-size: 14px;
+  }
+  .top-bar-right {
+    font-size: 14px;
+  }
+  .sign-in-button {
+    font-size: 14px;
+  }
+  .sign-up-button {
+    font-size: 14px;
+  }
+  .sign-out-button {
+    margin-left: 10%;
+    margin-right: 90%;
+  }
+  .home-link {
+    font-size: 18px;
+    margin-left: 50%;
+    margin-right: 50%;
+  }
+
+  .quiz-image {
+    max-width: 250px;
+    max-height: 250px;
+  }
+
+  .display-vote-button {
+    font-size: 16px;
+    padding: 8px;
+    max-height: 60px;
+  }
+
+  .continue-button {
+    font-size: 16px;
+    padding: 8px;
+    max-height: 40px;
+  }
+
+  .answer-show {
+    margin-top: 5px;
+    font-size: 20px;
+  }
+
+  .human-avg-show {
+    margin-top: 5px;
+  }
+
+  .human-avg-percent {
+    color: green;
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  .ai-avg-percent {
+    color: red;
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  .quiz-prompt {
+    margin-top: 7px;
+  }
+
+  .quiz-section-header {
+    font-size: 12px;
+  }
+
+  .finish-category-button {
+    padding: 10px;
+    width: 50%;
+  }
+
+  .human-vote-button input {
+    width: 100px;
+    padding: 3px;
+  }
+
+  .ai-vote-button input {
+    width: 100px;
+    padding: 3px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .top-bar-left {
+    font-size: 12px;
+  }
+  .top-bar-right {
+    font-size: 12px;
+  }
+  .sign-in-button {
+    font-size: 12px;
+  }
+  .sign-up-button {
+    font-size: 12px;
+  }
+  .sign-out-button {
+    margin-left: 10%;
+    margin-right: 90%;
+  }
+  .home-link {
+    font-size: 18px;
+    margin-left: 50%;
+    margin-right: 50%;
+  }
+
+  .quiz-image {
+    max-width: 225px;
+    max-height: 225px;
+    margin-top: 8px;
+  }
+
+  .display-vote-button {
+    font-size: 14px;
+    padding: 8px;
+    max-height: 35px;
+  }
+
+  .continue-button {
+    font-size: 14px;
+    padding: 8px;
+    max-height: 30px;
+  }
+
+  .answer-show {
+    margin-top: 3px;
+    font-size: 18px;
+  }
+
+  .human-avg-show {
+    margin-top: 3px;
+  }
+
+  .human-avg-percent {
+    color: green;
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .ai-avg-percent {
+    color: red;
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .quiz-prompt {
+    margin-top: 5px;
+  }
+
+  .quiz-section-header {
+    font-size: 12px;
+  }
+
+  .finish-category-button {
+    padding: 10px;
+    width: 50%;
+  }
+
+  .human-vote-button input {
+    width: 100px;
+    padding: 3px;
+  }
+
+  .ai-vote-button input {
+    width: 100px;
+    padding: 3px;
+  }
+  .quiz-voting-area {
+    height: 1px;
+    margin-top: 0px;
+  }
 }

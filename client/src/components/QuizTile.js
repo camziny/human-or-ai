@@ -27,7 +27,7 @@ const QuizTile = ({
 
   const revealAnswer = () => {
     setReveal(true);
-    setTimeout(nextQuiz, 2500);
+    setTimeout(nextQuiz, 2800);
   };
 
   const buttons =
@@ -64,6 +64,8 @@ const QuizTile = ({
       aiScore += 1;
     }
   });
+
+  const totalVotes = humanScore + aiScore;
 
   const humanAvg = Math.round((humanScore / numOfVotes) * 100);
 
@@ -114,6 +116,7 @@ const QuizTile = ({
             <span className="ai-avg-percent">{aiAvg}%</span> of users guessed AI
           </div>
         ) : null}
+        {reveal ? <div className="total-votes-show">Number of Votes: {totalVotes}</div> : null}
         {buttons}
       </div>
     </div>

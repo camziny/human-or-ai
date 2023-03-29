@@ -35,7 +35,7 @@ const QuizVote = (props) => {
     props.userLoggedIn && props.voteSubmitted && props.userVote ? (
       <input
         type="button"
-        value={props.userVote.score === -1 ? "You voted AI" : "You voted Human"}
+        value={props.userVote.score === -1 ? "You voted: AI" : "You voted: Human"}
         className="display-vote-button"
       />
     ) : null;
