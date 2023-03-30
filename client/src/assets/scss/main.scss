@@ -322,6 +322,12 @@ img {
   }
 }
 
+.info-icon svg {
+  display: inline;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
 .human-vote-button {
   display: inline-block;
   justify-content: center;
@@ -1096,6 +1102,7 @@ img {
   }
   .home-link {
     font-size: 18px;
+    display: inline;
   }
 
   .quiz-image {
@@ -1144,7 +1151,9 @@ img {
 
   .quiz-section-header {
     font-size: 14px;
-    margin-top: 5px;
+    margin-top: 1px;
+    background-color: #07102d;
+    color: white;
   }
 
   .finish-category-button {
@@ -1173,5 +1182,21 @@ img {
 
   .home-page-register-header {
     font-size: 20px;
+  }
+
+  .info-icon svg {
+    display: inline;
+    margin-top: 10px;
+    margin-left: 80%;
+    margin-right: 20%;
+  }
+
+  .play-now-header {
+    font-size: 24px;
+  }
+
+  .finish-category-button {
+    font-size: 24px;
+    width: 30%;
   }
 }
