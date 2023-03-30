@@ -4,6 +4,8 @@ import QuizTile from "./QuizTile";
 import translateServerErrors from "../services/translateServerErrors.js";
 import ErrorList from "./layout/ErrorList.js";
 import NewQuizForm from "./NewQuizForm";
+import { Info } from "@material-ui/icons";
+import { HighlightOffOutlined } from "@material-ui/icons";
 
 const CategoryShowPage = (props) => {
   const { id } = useParams();
@@ -217,12 +219,23 @@ const CategoryShowPage = (props) => {
 
   const errorList = Object.keys(errors) ? <ErrorList errors={errors} /> : null;
 
+  const [showInstructions, setShowInstructions] = useState(false);
+
+  const toggleInstructions = () => {
+    setShowInstructions(!showInstructions);
+  };
+
   return (
     <div className="quiz-section">
-      <div className="quiz-section-header">
-        For each image, vote whether you think it was created by a human or by artificial
-        intelligence.
-      </div>
+      <a className="info-icon" onClick={toggleInstructions}>
+        {showInstructions ? <HighlightOffOutlined /> : <Info />}
+      </a>
+      {showInstructions ? (
+        <div className="quiz-section-header">
+          For each image, vote whether you think it was created by a human or by artificial
+          intelligence.
+        </div>
+      ) : null}
       <div className="quiz-tiles">
         {currentQuiz === quizTiles.length - 1 ? (
           <Link to="/categories" className="finish-category-button">
