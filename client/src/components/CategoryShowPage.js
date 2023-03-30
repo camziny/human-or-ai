@@ -220,7 +220,7 @@ const CategoryShowPage = (props) => {
   return (
     <div className="quiz-section">
       <div className="quiz-section-header">
-        For each image, guess whether you think it was created by a human or by artificial
+        For each image, vote whether you think it was created by a human or by artificial
         intelligence.
       </div>
       <div className="quiz-tiles">

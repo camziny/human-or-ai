@@ -107,13 +107,13 @@ const QuizTile = ({
         {reveal ? <div className="answer-show">Answer: {answer}</div> : null}
         {reveal ? (
           <div className="human-avg-show">
-            <span className="human-avg-percent">{humanAvg}%</span> of users guessed human
+            <span className="human-avg-percent">{humanAvg}%</span> of users voted human
           </div>
         ) : null}
         {reveal ? (
           <div className="ai-avg-show">
             {" "}
-            <span className="ai-avg-percent">{aiAvg}%</span> of users guessed AI
+            <span className="ai-avg-percent">{aiAvg}%</span> of users voted AI
           </div>
         ) : null}
         {reveal ? <div className="total-votes-show">Number of Votes: {totalVotes}</div> : null}
