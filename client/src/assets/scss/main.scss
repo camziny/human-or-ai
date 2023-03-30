@@ -616,6 +616,106 @@ img {
   margin-top: 40px;
 }
 
+@media only screen and (max-width: 375px) {
+  .top-bar-left {
+    font-size: 12px;
+  }
+  .top-bar-right {
+    font-size: 12px;
+  }
+  .sign-in-button {
+    font-size: 12px;
+  }
+  .sign-up-button {
+    font-size: 12px;
+  }
+  .sign-out-button {
+    margin-left: 10%;
+    margin-right: 90%;
+  }
+  .home-link {
+    font-size: 18px;
+    margin-left: 50%;
+    margin-right: 50%;
+  }
+
+  .quiz-image {
+    max-width: 200px;
+    max-height: 200px;
+    margin-top: 6px;
+  }
+
+  .display-vote-button {
+    font-size: 12px;
+    padding: 8px;
+    height: 35px;
+  }
+
+  .continue-button {
+    font-size: 12px;
+    padding: 8px;
+    height: 35px;
+  }
+
+  .answer-show {
+    margin-top: 1px;
+    font-size: 14px;
+  }
+
+  .human-avg-show {
+    margin-top: 2px;
+  }
+
+  .human-avg-percent {
+    color: green;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .ai-avg-percent {
+    color: red;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .quiz-prompt {
+    margin-top: 5px;
+    font-size: 12px;
+  }
+
+  .quiz-section-header {
+    font-size: 12px;
+  }
+
+  .finish-category-button {
+    padding: 8px;
+    width: 40%;
+  }
+
+  .human-vote-button input {
+    width: 100px;
+    padding: 3px;
+  }
+
+  .ai-vote-button input {
+    width: 100px;
+    padding: 3px;
+  }
+  .quiz-voting-area {
+    height: 1px;
+    margin-top: 0px;
+  }
+
+  .unauthenticated-items-container {
+    margin-top: 10px;
+  }
+
+  .home-page-register-header {
+    font-size: 16px;
+    margin-top: 5px;
+  }
+}
+
 @media only screen and (max-width: 400px) {
   .top-bar-left {
     font-size: 14px;
@@ -640,34 +740,34 @@ img {
   }
 
   .quiz-image {
-    max-width: 250px;
-    max-height: 250px;
-    margin-top: 10px;
+    max-width: 180px;
+    max-height: 180px;
+    margin-top: 2px;
   }
 
   .quiz-prompt {
-    font-size: 22px;
+    font-size: 16px;
   }
 
   .display-vote-button {
-    font-size: 16px;
-    padding: 8px;
-    max-height: 40px;
-  }
-
-  .continue-button {
-    font-size: 16px;
+    font-size: 12px;
     padding: 8px;
     max-height: 30px;
   }
 
+  .continue-button {
+    font-size: 12px;
+    padding: 8px;
+    max-height: 20px;
+  }
+
   .answer-show {
-    margin-top: 5px;
-    font-size: 20px;
+    margin-top: 1px;
+    font-size: 18px;
   }
 
   .human-avg-show {
-    margin-top: 5px;
+    margin-top: 1px;
   }
 
   .human-avg-percent {
@@ -683,7 +783,7 @@ img {
   }
 
   .quiz-prompt {
-    margin-top: 7px;
+    margin-top: 4px;
   }
 
   .quiz-section-header {
@@ -796,105 +896,6 @@ img {
   }
 }
 
-@media only screen and (max-width: 375px) {
-  .top-bar-left {
-    font-size: 12px;
-  }
-  .top-bar-right {
-    font-size: 12px;
-  }
-  .sign-in-button {
-    font-size: 12px;
-  }
-  .sign-up-button {
-    font-size: 12px;
-  }
-  .sign-out-button {
-    margin-left: 10%;
-    margin-right: 90%;
-  }
-  .home-link {
-    font-size: 18px;
-    margin-left: 50%;
-    margin-right: 50%;
-  }
-
-  .quiz-image {
-    max-width: 225px;
-    max-height: 225px;
-    margin-top: 8px;
-  }
-
-  .display-vote-button {
-    font-size: 14px;
-    padding: 8px;
-    max-height: 30px;
-  }
-
-  .continue-button {
-    font-size: 14px;
-    padding: 8px;
-    max-height: 25px;
-  }
-
-  .answer-show {
-    margin-top: 3px;
-    font-size: 18px;
-  }
-
-  .human-avg-show {
-    margin-top: 3px;
-  }
-
-  .human-avg-percent {
-    color: green;
-    font-size: 16px;
-    font-weight: 800;
-  }
-
-  .ai-avg-percent {
-    color: red;
-    font-size: 16px;
-    font-weight: 800;
-  }
-
-  .quiz-prompt {
-    margin-top: 5px;
-  }
-
-  .quiz-section-header {
-    font-size: 12px;
-  }
-
-  .finish-category-button {
-    padding: 10px;
-    width: 50%;
-  }
-
-  .human-vote-button input {
-    width: 100px;
-    padding: 3px;
-  }
-
-  .ai-vote-button input {
-    width: 100px;
-    padding: 3px;
-  }
-  .quiz-voting-area {
-    height: 1px;
-    margin-top: 0px;
-  }
-
-  .unauthenticated-items-container {
-    margin-top: 10px;
-  }
-
-  .home-page-register-header {
-    font-size: 16px;
-    margin-top: 5px;
-  }
-}
-
 @media only screen and (max-width: 800px) {
   .top-bar-left {
     font-size: 14px;
@@ -919,8 +920,8 @@ img {
   }
 
   .quiz-image {
-    max-width: 250px;
-    max-height: 250px;
+    max-width: 300px;
+    max-height: 300px;
   }
 
   .display-vote-button {
