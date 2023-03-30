@@ -17,7 +17,6 @@ a {
   color: white;
   border-radius: 10px;
   padding: 8px;
-  margin-top: 5px;
 }
 
 menu {
@@ -32,7 +31,6 @@ menu {
 .button {
   background-color: #07102d;
   border-radius: 10px;
-  display: inline-block;
 }
 
 .sign-up-button {
@@ -310,8 +308,8 @@ img {
   border-radius: 8px;
   margin: auto;
   margin-top: 25px;
-  width: 350px;
-  height: 350px;
+  width: 512px;
+  height: 512px;
   animation: 1.5s fadeIn ease-out;
 }
 
@@ -993,6 +991,11 @@ img {
   .top-bar-right {
     font-size: 14px;
   }
+
+  .menu li {
+    display: flex;
+    float: right;
+  }
   .sign-in-button {
     font-size: 14px;
   }
@@ -1005,8 +1008,6 @@ img {
   }
   .home-link {
     font-size: 18px;
-    margin-left: 50%;
-    margin-right: 50%;
   }
 
   .quiz-image {
@@ -1076,13 +1077,13 @@ img {
   }
 }
 
-@media only screen and (max-width: 1200px) {
-  .top-bar-left {
-    font-size: 14px;
+@media only screen and (max-width: 1600px) {
+  .menu ul {
+    position: fixed;
+    top: 0;
+    width: 100%;
   }
-  .top-bar-right {
-    font-size: 14px;
-  }
+
   .sign-in-button {
     font-size: 14px;
   }
@@ -1095,13 +1096,12 @@ img {
   }
   .home-link {
     font-size: 18px;
-    margin-left: 50%;
-    margin-right: 50%;
   }
 
   .quiz-image {
     max-width: 250px;
     max-height: 250px;
+    margin-top: 5px;
   }
 
   .display-vote-button {
@@ -1138,11 +1138,13 @@ img {
   }
 
   .quiz-prompt {
-    margin-top: 7px;
+    margin-top: 9px;
+    font-size: 16px;
   }
 
   .quiz-section-header {
-    font-size: 12px;
+    font-size: 14px;
+    margin-top: 5px;
   }
 
   .finish-category-button {
