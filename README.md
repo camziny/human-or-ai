@@ -9,6 +9,7 @@ Check out [human-or-ai](https://human-or-ai.herokuapp.com/)
 - PERN stack (PostgreSQL, Express, React, Node)
 - Heroku (see link above)
 - Passport
+- AWS s3
 - Material UI
 
 ## Features:
